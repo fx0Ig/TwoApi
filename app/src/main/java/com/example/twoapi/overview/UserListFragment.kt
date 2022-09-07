@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.twoapi.R
 import com.example.twoapi.databinding.UserListFragmentBinding
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class UserListFragment : Fragment(), UserClickListener {
 
-    private val viewModel by activityViewModels<UserViewModel>()
+    private val viewModel by sharedViewModel<UserViewModel>()
     private lateinit var binding: UserListFragmentBinding
     private lateinit var adapter: UserItemAdapter
 

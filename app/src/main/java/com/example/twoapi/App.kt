@@ -2,11 +2,19 @@ package com.example.twoapi
 
 import android.app.Application
 import com.example.twoapi.data.UserDatabase
+import com.example.twoapi.di.appModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
 class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        AppComponent.userDatabase = UserDatabase.getDatabase(this)
+        startKoin{
+            androidLogger()
+            androidContext(this@App)
+            modules(appModule)
+        }
     }
 }
